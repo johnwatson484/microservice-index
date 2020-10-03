@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  hapi-template:
+  microservice-index:
     build: .
-    image: hapi-template
-    container_name: hapi-template
+    image: microservice-index
+    container_name: microservice-index

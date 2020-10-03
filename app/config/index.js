@@ -12,7 +12,7 @@ const schema = joi.object().keys({
 const config = {
   port: process.env.PORT,
   env: process.env.NODE_ENV,
-  appName: 'Hapi Template'
+  appName: 'Microservice Index'
 }
 
 // Validate config
