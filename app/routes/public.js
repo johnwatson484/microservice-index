@@ -4,8 +4,10 @@ module.exports = [{
   handler: {
     directory: {
       path: [
-        'app/public/css',
-        'app/public/scripts'
+        'app/public/stylesheets',
+        'app/public/scripts',
+        'node_modules/govuk-frontend/govuk/assets',
+        'node_modules/govuk-frontend/govuk'
       ]
     }
   }
