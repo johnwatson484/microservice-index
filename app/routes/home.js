@@ -1,6 +1,6 @@
-const db = require('../data')
 const joi = require('joi')
 const boom = require('@hapi/boom')
+const { createOrUpdate } = require('../services')
 
 module.exports = [{
   method: 'GET',
@@ -25,14 +25,14 @@ module.exports = [{
       }
     },
     handler: async (request, h) => {
-      const service = {
-        ...request.payload,
-        updated: new Date()
+      console.log(`received service update: ${JSON.stringify(request.payload)}`)
+      try {
+        await createOrUpdate(request.payload)
+        return h.response('Service index updated').code(201)
+      } catch (error) {
+        console.error(error)
+        return boom.badImplementation(error)
       }
-
-      console.log(service)
-      // return await db.service.upsert(request.payload)
-      return h.response(service).code(201)
     }
   }
 }]

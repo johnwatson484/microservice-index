@@ -11,6 +11,8 @@ services:
       - "9229:9229"
     environment:
       POSTGRES_HOST: microservice-index-postgres
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       - ./app/:/home/node/app/
       - ./package.json:/home/node/package.json
