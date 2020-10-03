@@ -1,19 +1,39 @@
 {% extends '_layout.njk' %}
-
-{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
-{% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      }]
-  }) }}
-{% endblock %}
-
 {% block content %}
-  
+  {%if services.length %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption">Microservices</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Name</th>
+          <th scope="col" class="govuk-table__header">Repository</th>
+          <th scope="col" class="govuk-table__header">Version</th>
+          <th scope="col" class="govuk-table__header">Description</th>
+          <th scope="col" class="govuk-table__header">Framework</th>
+          <th scope="col" class="govuk-table__header">Owner</th>
+          <th scope="col" class="govuk-table__header">Updated</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for service in services %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{ service. name }}</td>
+            <td class="govuk-table__cell"><a href="{{ service. repository }}">{{ service. repository }}</a></td>
+            <td class="govuk-table__cell">{{ service. version }}</td>
+            <td class="govuk-table__cell">{{ service. description }}</td>
+            <td class="govuk-table__cell">{{ service. framework }}</td>
+            <td class="govuk-table__cell">{{ service. owner }}</td>
+            <td class="govuk-table__cell">{{ service. updatedShortDate }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    {{ govukWarningText({
+      text: "No services registered",
+      iconFallbackText: "Warning"
+    }) }}
+  {% endif %}
 {% endblock %}

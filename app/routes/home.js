@@ -1,12 +1,14 @@
 const joi = require('joi')
 const boom = require('@hapi/boom')
-const { createOrUpdate } = require('../services')
+const { createOrUpdate, getAll } = require('../services')
 
 module.exports = [{
   method: 'GET',
   path: '/',
-  handler: (request, h) => {
-    return h.view('home')
+  handler: async (request, h) => {
+    const services = await getAll()
+    console.log(services)
+    return h.view('home', { services })
   }
 }, {
   method: 'POST',
@@ -14,6 +16,7 @@ module.exports = [{
   options: {
     validate: {
       payload: joi.object({
+        name: joi.string(),
         repository: joi.string(),
         version: joi.string(),
         description: joi.string(),

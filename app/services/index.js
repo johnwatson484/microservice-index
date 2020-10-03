@@ -20,6 +20,11 @@ async function createOrUpdate (service) {
   }
 }
 
+async function getAll () {
+  return await db.service.findAll({ order: [['name'], ['updated']] })
+}
+
 module.exports = {
-  createOrUpdate
+  createOrUpdate,
+  getAll
 }
