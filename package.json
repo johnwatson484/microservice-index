@@ -24,7 +24,9 @@
     "@hapi/vision": "^6.0.1",
     "blipp": "^4.0.1",
     "govuk-frontend": "^3.7.0",
-    "nunjucks": "^3.2.2"
+    "nunjucks": "^3.2.2",
+    "pg": "^7.12.1",
+    "sequelize": "^5.22.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",

@@ -1,4 +1,5 @@
 const joi = require('joi')
+const databaseConfig = require('./db')
 const envs = ['development', 'test', 'production']
 
 // Define config schema
@@ -16,11 +17,17 @@ const config = {
 }
 
 // Validate config
-const { error, value } = schema.validate(config)
+const result = schema.validate(config, {
+  abortEarly: false
+})
 
-// Throw if config is invalid
-if (error) {
-  throw new Error(`The server config is invalid. ${error.message}`)
+if (result.error) {
+  throw new Error(`The server config is invalid. ${result.error.message}`)
+}
+
+const value = {
+  ...result.value,
+  database: databaseConfig
 }
 
 module.exports = value
