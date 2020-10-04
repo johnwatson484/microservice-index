@@ -1,14 +1,11 @@
 # Microservice Index
-Catalogue your microservices
+Catalogue microservices within an organisation.
+
+Uses [GOV.UK Design System](https://design-system.service.gov.uk/)
 
 ## Prerequisites
-
-Either:
 - Docker
 - Docker Compose
-
-Or:
-- Node 12+
 
 ## Running application
 ### Docker
@@ -17,11 +14,15 @@ docker-compose build
 docker-compose up
 ```
 
-### Node
+## Publishing service updates
+Services can be published via Http `POST` to `/`.  
+
+### Payload
 ```
-node app
-```
-Or:
-```
-nodemon app
+name: string,
+repository: string,
+version: string,
+description: string,
+framework: string,
+owner: string
 ```
