@@ -1,0 +1,44 @@
+{% extends '_layout.njk' %}
+
+{% block content %}
+  <h2 class="govuk-heading-l">Service details</h2>
+
+  <table class="govuk-table">
+    <caption class="govuk-table__caption">{{ services[0].name }}</caption>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">Owner</th>
+        <td class="govuk-table__cell">{{ services[0].owner }}</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">Repository</th>
+        <td class="govuk-table__cell"><a href="{{ services[0].repository }}">{{ services[0].repository }}</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">Framework</th>
+        <td class="govuk-table__cell">{{ services[0].framework }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="govuk-heading-m">Releases</h3>
+
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Version</th>
+        <th scope="col" class="govuk-table__header">Updated</th>
+        <th scope="col" class="govuk-table__header">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for service in services %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ service.version }}</td>
+          <td class="govuk-table__cell">{{ service.updatedShortDate }}</td>
+          <td class="govuk-table__cell">{{ service.description }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

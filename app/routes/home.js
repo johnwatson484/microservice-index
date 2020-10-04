@@ -1,6 +1,6 @@
 const joi = require('joi')
 const boom = require('@hapi/boom')
-const { createOrUpdate, getAll } = require('../services')
+const { createOrUpdate, getAll, getOne } = require('../services')
 
 module.exports = [{
   method: 'GET',
@@ -8,6 +8,13 @@ module.exports = [{
   handler: async (request, h) => {
     const services = await getAll(request.query.search)
     return h.view('home', { services })
+  }
+}, {
+  method: 'GET',
+  path: '/details',
+  handler: async (request, h) => {
+    const services = await getOne(request.query.service)
+    return h.view('details', { services })
   }
 }, {
   method: 'POST',

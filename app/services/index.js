@@ -49,7 +49,12 @@ async function getAll (search) {
   return services
 }
 
+async function getOne (name) {
+  return await db.service.findAll({ where: { name }, order: [['updated', 'DESC']] })
+}
+
 module.exports = {
   createOrUpdate,
-  getAll
+  getAll,
+  getOne
 }
