@@ -3,17 +3,29 @@
 
 {% block content %}
   {%if services.length %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <form method="GET" action="/">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <input class="govuk-input" id="search" name="search" type="text">
+            </div>
+            <button class="govuk-button" data-module="govuk-button">Search</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
     <table class="govuk-table">
       <caption class="govuk-table__caption">Microservices</caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Name</th>
           <th scope="col" class="govuk-table__header">Repository</th>
-          <th scope="col" class="govuk-table__header">Version</th>
           <th scope="col" class="govuk-table__header">Description</th>
           <th scope="col" class="govuk-table__header">Framework</th>
           <th scope="col" class="govuk-table__header">Owner</th>
-          <th scope="col" class="govuk-table__header">Updated</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
@@ -21,11 +33,9 @@
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">{{ service. name }}</td>
             <td class="govuk-table__cell"><a href="{{ service. repository }}">{{ service. repository }}</a></td>
-            <td class="govuk-table__cell">{{ service. version }}</td>
             <td class="govuk-table__cell">{{ service. description }}</td>
             <td class="govuk-table__cell">{{ service. framework }}</td>
             <td class="govuk-table__cell">{{ service. owner }}</td>
-            <td class="govuk-table__cell">{{ service. updatedShortDate }}</td>
           </tr>
         {% endfor %}
       </tbody>

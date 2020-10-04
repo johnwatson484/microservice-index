@@ -6,8 +6,7 @@ module.exports = [{
   method: 'GET',
   path: '/',
   handler: async (request, h) => {
-    const services = await getAll()
-    console.log(services)
+    const services = await getAll(request.query.search)
     return h.view('home', { services })
   }
 }, {
