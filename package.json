@@ -8,7 +8,11 @@
     "build:css": "sass --load-path=./ app/public/stylesheets",
     "build:css-watch": "npm run build:css -- --watch",
     "start": "node app/index.js",
-    "start:watch": "nodemon --inspect=0.0.0.0 --ext css,js,njk --legacy-watch app/index.js"
+    "start:watch": "nodemon --inspect=0.0.0.0 --ext css,js,njk --legacy-watch app/index.js",
+    "pretest": "npm run test:lint",
+    "test": "jest --runInBand",
+    "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
+    "test:lint": "standard"
   },
   "author": "John Watson",
   "license": "MIT",
@@ -30,6 +34,26 @@
   "devDependencies": {
     "nodemon": "^2.0.4",
     "standard": "^14.3.4",
-    "sass": "^1.26.11"
+    "sass": "^1.26.11",
+    "jest": "^26.1.0",
+    "jest-junit": "^11.1.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "expect",
+      "test",
+      "afterEach",
+      "jest",
+      "beforeAll",
+      "afterAll",
+      "it",
+      "expect",
+      "describe",
+      "jest",
+      "beforeEach",
+      "assert"
+    ]
   }
 }

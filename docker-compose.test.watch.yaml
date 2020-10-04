@@ -1,0 +1,4 @@
+version: '3.7'
+services:
+  microservice-index:
+    command: npm run test:watch
