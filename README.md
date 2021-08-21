@@ -1,3 +1,7 @@
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=johnwatson484_microservice-index&metric=alert_status)](https://sonarcloud.io/dashboard?id=johnwatson484_microservice-index)
+[![Known Vulnerabilities](https://snyk.io/test/github/johnwatson484/microservice-index/badge.svg)](https://snyk.io/test/github/johnwatson484/microservice-index)
+
 # Microservice Index
 Catalogue microservices within an organisation.
 
